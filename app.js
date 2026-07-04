@@ -14,6 +14,7 @@
     shuffleToggle: document.getElementById("shuffle-toggle"),
     btnStart: document.getElementById("btn-start"),
     btnShowHistory: document.getElementById("btn-show-history"),
+    btnHome: document.getElementById("btn-home"),
 
     progressSection: document.getElementById("progress-section"),
     progressCount: document.getElementById("progress-count"),
@@ -237,7 +238,16 @@
     });
   }
 
+  function goHome() {
+    const inQuiz = !screens.quiz.classList.contains("hidden");
+    if (inQuiz && (results.length < queue.length)) {
+      if (!confirm("試験を中断してトップ画面に戻りますか？現在の進捗は記録されません。")) return;
+    }
+    showScreen("start");
+  }
+
   // ---- イベント ----
+  el.btnHome.addEventListener("click", goHome);
   el.btnStart.addEventListener("click", () => startQuiz());
   el.btnShowHistory.addEventListener("click", () => {
     renderHistory();

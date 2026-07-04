@@ -21,9 +21,13 @@ body {
 }
 
 .app-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
   background: var(--color-primary-dark);
   color: #fff;
-  padding: 20px 16px;
+  padding: 16px 16px;
+  padding-right: 100px;
   text-align: center;
 }
 
@@ -32,6 +36,24 @@ body {
   font-size: 1.3rem;
   line-height: 1.5;
 }
+
+.btn-home {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.14);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn-home:hover { background: rgba(255,255,255,0.25); }
+.btn-home:active { transform: translateY(-50%) scale(0.96); }
 
 .sp-only { display: none; }
 
@@ -285,8 +307,23 @@ kbd {
 .history-score { font-weight: 700; }
 .history-empty { color: var(--color-muted); text-align: center; padding: 20px 0; }
 
+.btn, .btn-home {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 600px) {
+  .key-hint { display: none; }
+}
+
 @media (max-width: 480px) {
   .sp-only { display: inline; }
-  .app-header h1 { font-size: 1.1rem; }
+  .app-header { padding: 14px 90px 14px 12px; }
+  .app-header h1 { font-size: 1rem; }
+  .btn-home { padding: 7px 12px; font-size: 0.78rem; right: 8px; }
+  main#app { padding: 16px 12px 60px; }
+  .card { padding: 16px; }
   .grade-buttons { flex-direction: column; }
+  .grade-buttons .btn { padding: 14px 16px; }
+  .speech-text { font-size: 1rem; }
 }
