@@ -1,0 +1,292 @@
+:root {
+  --color-bg: #f4f6f9;
+  --color-primary: #1e5aa8;
+  --color-primary-dark: #123f7a;
+  --color-correct: #1c8a4c;
+  --color-incorrect: #c62828;
+  --color-text: #212529;
+  --color-muted: #667085;
+  --color-card: #ffffff;
+  --color-border: #dfe4ea;
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+}
+
+.app-header {
+  background: var(--color-primary-dark);
+  color: #fff;
+  padding: 20px 16px;
+  text-align: center;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 1.3rem;
+  line-height: 1.5;
+}
+
+.sp-only { display: none; }
+
+main#app {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 16px 60px;
+}
+
+.screen.hidden { display: none; }
+
+.card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+h2 { margin-top: 0; }
+
+.section-checks {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 16px 0;
+  padding: 12px;
+  background: #f8f9fb;
+  border-radius: 8px;
+}
+
+.section-checks label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+}
+
+.shuffle-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+
+.btn {
+  display: inline-block;
+  width: 100%;
+  padding: 12px 18px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.05s;
+}
+
+.btn:active { transform: scale(0.98); }
+
+.btn-primary {
+  background: var(--color-primary);
+  color: #fff;
+}
+.btn-primary:hover { background: var(--color-primary-dark); }
+
+.btn-secondary {
+  background: #eef1f5;
+  color: var(--color-text);
+}
+.btn-secondary:hover { background: #e0e4ea; }
+
+.btn-correct {
+  background: #e6f4ea;
+  color: var(--color-correct);
+  border: 1px solid var(--color-correct);
+}
+.btn-correct:hover { background: #d3ecdb; }
+
+.btn-incorrect {
+  background: #fdeaea;
+  color: var(--color-incorrect);
+  border: 1px solid var(--color-incorrect);
+}
+.btn-incorrect:hover { background: #fadcdc; }
+
+kbd {
+  background: #eef1f5;
+  border: 1px solid #c8ced6;
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-size: 0.85em;
+  font-family: monospace;
+}
+
+.how-to {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-border);
+}
+.how-to h3 { margin-bottom: 8px; font-size: 1rem; color: var(--color-muted); }
+.how-to ol { padding-left: 20px; color: var(--color-muted); font-size: 0.92rem; line-height: 1.7; }
+
+/* 進捗 */
+.progress-wrap { margin-bottom: 16px; }
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+  color: var(--color-muted);
+}
+.section-badge {
+  background: var(--color-primary);
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+}
+.progress-bar-outer {
+  background: #e2e6ec;
+  border-radius: 999px;
+  height: 8px;
+  overflow: hidden;
+}
+.progress-bar-inner {
+  background: var(--color-primary);
+  height: 100%;
+  width: 0%;
+  transition: width 0.2s;
+}
+
+/* 質問/回答 */
+.speaker {
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.speaker-label {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+.examiner {
+  background: #eef2f8;
+  border: 1px solid #d3ddec;
+}
+.examiner .speaker-label { background: var(--color-primary-dark); color: #fff; }
+
+.candidate {
+  background: #fff8e6;
+  border: 1px solid #f0e0ad;
+}
+.candidate .speaker-label { background: #a97a12; color: #fff; }
+
+.speech-text {
+  margin: 0;
+  white-space: pre-wrap;
+  line-height: 1.8;
+  font-size: 1.02rem;
+}
+
+.prompt {
+  color: var(--color-muted);
+  font-size: 0.92rem;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.grade-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.grade-buttons .btn { margin-bottom: 0; }
+
+.graded-result {
+  text-align: center;
+  font-weight: 700;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+.graded-result.correct { background: #e6f4ea; color: var(--color-correct); }
+.graded-result.incorrect { background: #fdeaea; color: var(--color-incorrect); }
+
+.quiz-actions .btn:last-child { margin-bottom: 0; }
+
+.hidden { display: none !important; }
+
+/* 結果画面 */
+.result-summary {
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.result-list { margin-bottom: 20px; }
+
+.result-item {
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 8px;
+}
+.result-item.correct { border-left: 5px solid var(--color-correct); }
+.result-item.incorrect { border-left: 5px solid var(--color-incorrect); }
+
+.result-item-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  margin-bottom: 6px;
+}
+.result-item-q {
+  font-weight: 600;
+  margin-bottom: 6px;
+  white-space: pre-wrap;
+}
+.result-item-a {
+  color: var(--color-muted);
+  font-size: 0.92rem;
+  white-space: pre-wrap;
+}
+.mark { font-weight: 700; }
+.mark.correct { color: var(--color-correct); }
+.mark.incorrect { color: var(--color-incorrect); }
+
+.result-actions .btn:last-child { margin-bottom: 0; }
+
+/* 履歴画面 */
+.history-list { margin-bottom: 20px; }
+.history-item {
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.history-date { color: var(--color-muted); font-size: 0.88rem; }
+.history-score { font-weight: 700; }
+.history-empty { color: var(--color-muted); text-align: center; padding: 20px 0; }
+
+@media (max-width: 480px) {
+  .sp-only { display: inline; }
+  .app-header h1 { font-size: 1.1rem; }
+  .grade-buttons { flex-direction: column; }
+}

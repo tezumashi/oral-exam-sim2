@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>二等無人航空機操縦士 修了審査 口述審査シミュレーション</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header class="app-header">
+  <h1>二等無人航空機操縦士 修了審査<br class="sp-only" /> 口述審査シミュレーション</h1>
+</header>
+
+<main id="app">
+
+  <!-- スタート画面 -->
+  <section id="screen-start" class="screen">
+    <div class="card">
+      <h2>練習範囲を選んでください</h2>
+      <div id="section-checks" class="section-checks"></div>
+
+      <label class="shuffle-label">
+        <input type="checkbox" id="shuffle-toggle" />
+        出題順をシャッフルする
+      </label>
+
+      <button id="btn-start" class="btn btn-primary">練習を開始する</button>
+      <button id="btn-show-history" class="btn btn-secondary">学習履歴を見る</button>
+
+      <div class="how-to">
+        <h3>使い方</h3>
+        <ol>
+          <li>試験員の質問が表示されたら、口に出して回答してください。</li>
+          <li>回答できたら <kbd>Space</kbd> キー（またはボタン）で正解例を表示します。</li>
+          <li>自己採点し、<kbd>Enter</kbd>キーで「正解」、<kbd>Backspace</kbd>キーで「不正解」を記録します。</li>
+          <li><kbd>Space</kbd>キーで次の問題に進みます。</li>
+          <li>最後に結果と間違えた問題の一覧が表示され、復習できます。</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- 問題画面 -->
+  <section id="screen-quiz" class="screen hidden">
+    <div class="progress-wrap">
+      <div class="progress-info">
+        <span id="progress-section" class="section-badge"></span>
+        <span id="progress-count"></span>
+      </div>
+      <div class="progress-bar-outer"><div id="progress-bar-inner" class="progress-bar-inner"></div></div>
+    </div>
+
+    <div class="card quiz-card">
+      <div class="speaker examiner">
+        <span class="speaker-label">試験員</span>
+        <p id="question-text" class="speech-text"></p>
+      </div>
+
+      <div id="answer-prompt" class="prompt">
+        口頭で回答してください。準備ができたら <kbd>Space</kbd> で正解例を表示します。
+      </div>
+
+      <div id="answer-box" class="speaker candidate hidden">
+        <span class="speaker-label">正解例（受験生の回答）</span>
+        <p id="answer-text" class="speech-text"></p>
+      </div>
+
+      <div id="grade-buttons" class="grade-buttons hidden">
+        <button id="btn-correct" class="btn btn-correct">○ 正解だった（Enter）</button>
+        <button id="btn-incorrect" class="btn btn-incorrect">✕ 間違えた（Backspace）</button>
+      </div>
+
+      <div id="graded-result" class="graded-result hidden"></div>
+
+      <div class="quiz-actions">
+        <button id="btn-reveal" class="btn btn-primary">正解を表示する（Space）</button>
+        <button id="btn-next" class="btn btn-primary hidden">次の問題へ（Space）</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 結果画面 -->
+  <section id="screen-result" class="screen hidden">
+    <div class="card">
+      <h2>結果</h2>
+      <p id="result-summary" class="result-summary"></p>
+      <div id="result-list" class="result-list"></div>
+      <div class="result-actions">
+        <button id="btn-retry-all" class="btn btn-primary">もう一度すべて挑戦する</button>
+        <button id="btn-retry-wrong" class="btn btn-secondary">間違えた問題だけ復習する</button>
+        <button id="btn-back-start" class="btn btn-secondary">スタート画面に戻る</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 履歴画面 -->
+  <section id="screen-history" class="screen hidden">
+    <div class="card">
+      <h2>学習履歴</h2>
+      <div id="history-list" class="history-list"></div>
+      <div class="result-actions">
+        <button id="btn-clear-history" class="btn btn-secondary">履歴を削除する</button>
+        <button id="btn-history-back" class="btn btn-secondary">スタート画面に戻る</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
