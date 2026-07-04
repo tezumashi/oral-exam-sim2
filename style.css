@@ -92,14 +92,6 @@ h2 { margin-top: 0; }
   font-size: 0.95rem;
 }
 
-.shuffle-label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 20px;
-  font-size: 0.95rem;
-}
-
 .btn {
   display: inline-block;
   width: 100%;

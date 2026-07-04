@@ -11,7 +11,6 @@
 
   const el = {
     sectionChecks: document.getElementById("section-checks"),
-    shuffleToggle: document.getElementById("shuffle-toggle"),
     btnStart: document.getElementById("btn-start"),
     btnShowHistory: document.getElementById("btn-show-history"),
     btnHome: document.getElementById("btn-home"),
@@ -72,15 +71,6 @@
     return Array.from(el.sectionChecks.querySelectorAll("input:checked")).map((i) => i.value);
   }
 
-  function shuffle(arr) {
-    const a = arr.slice();
-    for (let i = a.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [a[i], a[j]] = [a[j], a[i]];
-    }
-    return a;
-  }
-
   function startQuiz(customQueue) {
     if (customQueue) {
       queue = customQueue;
@@ -88,7 +78,6 @@
       const selected = getSelectedSections();
       let indices = QUESTIONS.map((_, i) => i).filter((i) => selected.includes(QUESTIONS[i].section));
       if (indices.length === 0) indices = QUESTIONS.map((_, i) => i);
-      if (el.shuffleToggle.checked) indices = shuffle(indices);
       queue = indices;
     }
     currentIndex = 0;
@@ -195,7 +184,7 @@
       alert("間違えた問題はありませんでした。");
       return;
     }
-    startQuiz(el.shuffleToggle.checked ? shuffle(wrongIndices) : wrongIndices);
+    startQuiz(wrongIndices);
   }
 
   // ---- 履歴 ----
